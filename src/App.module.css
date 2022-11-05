@@ -1,0 +1,12 @@
+.selected {
+  background: rgb(61, 137, 236);
+}
+ul,
+ol {
+  list-style: none;
+}
+
+.searchBlock{
+  text-align: center;
+  margin: 10px 4px 10px 4px;
+}
