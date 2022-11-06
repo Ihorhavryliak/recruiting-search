@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { SearchUserType, UserType } from "../App";
 import { Loading } from "../tools/loading";
-import { Timer } from "./TimerType";
+import { Timer } from "./Timer";
 import styles from '../App.module.css'
 
 type PropType = {
