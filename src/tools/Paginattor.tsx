@@ -8,7 +8,7 @@ export const  PaginatedItems: React.FC<PaginatedItemsType>  =  React.memo((props
   const {currentPage} = props;
   let itemsPerPage =  30
   if (total_count > 1000) {
-    total_count = 1000;
+    total_count = 1000 - 10;
   }
 
   const [pageCount, setPageCount] = useState(0);
@@ -27,7 +27,7 @@ export const  PaginatedItems: React.FC<PaginatedItemsType>  =  React.memo((props
            forcePage = {currentPage}
         nextLabel=" >"
         onPageChange={(pageNumber) => {  page({ pageNumber }); }}
-        pageRangeDisplayed={0}
+        pageRangeDisplayed={2}
         marginPagesDisplayed={3}
         pageCount={pageCount}
         previousLabel="< "

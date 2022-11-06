@@ -36,6 +36,7 @@ export const Timer: React.FC<TimerType> = (props) => {
     } 
      const stopTimer = () => {
       clearInterval(timer);
+      start.current.removeEventListener('click', startTime)
     }
     if (start.current !== null) {
       stop.current.addEventListener('click', stopTimer);

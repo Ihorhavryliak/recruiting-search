@@ -47,11 +47,12 @@ export const ListUsersBlock: React.FC<PropsType> = React.memo(({ currentPage, se
 
   let nextPage = 0;
   if (currentPage !== 0) {
-    nextPage = (30 * currentPage) - 30;
+    nextPage = (30 * currentPage);
   }
 
   if (currentPage === 1) {
-    nextPage = 0;
+   
+    nextPage = (30 * 1);
   }
 
   return (<>
