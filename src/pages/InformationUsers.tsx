@@ -34,7 +34,10 @@ export const  InformationUsers: React.FC<PropType> = ({user, setLoad, isLoad}) =
           setUserDetales(res.data);
           setLoad(false)
         }
-        )
+        ).catch(error => {
+          setLoad(false)
+          alert('Reload The Page Please. ' + error + ' Error: ' + error.request.response)
+        })
     }
   }, [user, setLoad]);
   
