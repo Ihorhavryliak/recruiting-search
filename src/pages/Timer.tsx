@@ -23,20 +23,19 @@ export const Timer: React.FC<TimerType> = (props) => {
 
   useEffect(() => {
     let timer = setInterval(() => {
-      /* console.log('time'); */
+    /*   console.log('time'); */
        setSeconds((prev) => prev - 1);
     }, 1000);;
 
     const startTime  = () => {
       timer =  setInterval(() => {
-     /*  console.log('time2'); */
+      /* console.log('time2'); */
        setSeconds((prev) => prev - 1);
     }, 1000);
     
     } 
      const stopTimer = () => {
       clearInterval(timer);
-      start.current.removeEventListener('click', startTime)
     }
     if (start.current !== null) {
       stop.current.addEventListener('click', stopTimer);
@@ -46,17 +45,13 @@ export const Timer: React.FC<TimerType> = (props) => {
       start.current.addEventListener('click', startTime);
     }
     
-    const clean = () => {
-      (start.current !== null && start.current.removeEventListener('click', startTime));
-    }
-    const cleanStop = () => {
-      (stop.current !== null && stop.current.removeEventListener('click', stopTimer));
-    }
+
     return () => { clearInterval(timer);
-      clean();
-      cleanStop();
+      (start.current !== null && start.current.removeEventListener('click', startTime));
+      (stop.current !== null && stop.current.removeEventListener('click', stopTimer));
     };
   }, [props.timerKey]);
+
 
 
   return (
