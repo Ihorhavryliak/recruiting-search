@@ -1,15 +1,7 @@
 
 import { useEffect, useState } from "react";
-import { useNavigate, useSearchParams } from "react-router-dom";
-import style from './../App.module.css'
 
-type PropsType = {
-  value: string
-  onSubmit: (fixedValue: string) => void
-  isLoadSearch: boolean
-  setStr: Function
-  str: URLSearchParams
-}
+
 
 export const SearchBlock: React.FC<PropsType> = ({onSubmit, value, isLoadSearch, setStr, str}) => {
 
@@ -41,4 +33,12 @@ return (
 
 
 )
+}
+
+type PropsType = {
+  value: string
+  onSubmit: (fixedValue: string) => void
+  isLoadSearch: boolean
+  setStr: Function
+  str: URLSearchParams
 }

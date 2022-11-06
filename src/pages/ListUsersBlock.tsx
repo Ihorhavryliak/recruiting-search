@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { SearchResultType, SearchUserType, UserType } from "../App";
+import { SearchResultType, SearchUserType  } from "../App";
 import { Loading } from "../tools/loading";
 import { PaginatedItems } from "../tools/Paginattor";
 import style from './../App.module.css'

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation, useNavigate, useNavigation, useParams, useSearchParams } from 'react-router-dom';
+import { useLocation,  useSearchParams } from 'react-router-dom';
 import './App.css';
 import { Footer } from './pages/Footer';
 import { Header } from './pages/Header';
@@ -32,20 +32,20 @@ const App = React.memo(() => {
   return (<div className='mainContainer'>
     <Header />
     <div className='block'>
-    <div className='blockLeft'>
-      <SearchBlock setStr={setStr} str={str}  
-      value={serchTerm}
-       onSubmit={(value: string) => { setSerchTerm(value) }}
-        isLoadSearch={isLoadSearch}  />
-      <ListUsersBlock str={str} serchTerm={serchTerm} selecUser={selecUser} onUserSelect={setSelecUser} 
-      setLoadSearch={setLoadSearch} isLoad={isLoadSearch}  />
+      <div className='blockLeft'>
+        <SearchBlock setStr={setStr} str={str}
+          value={serchTerm}
+          onSubmit={(value: string) => { setSerchTerm(value) }}
+          isLoadSearch={isLoadSearch} />
+        <ListUsersBlock str={str} serchTerm={serchTerm} selecUser={selecUser} onUserSelect={setSelecUser}
+          setLoadSearch={setLoadSearch} isLoad={isLoadSearch} />
       </div>
-      <div className='blockRight'> 
-      <InformationUsers user={selecUser} setLoad={setLoad} isLoad={isLoad} />
+      <div className='blockRight'>
+        <InformationUsers user={selecUser} setLoad={setLoad} isLoad={isLoad} />
       </div>
     </div>
     <Footer />
-    </div>
+  </div>
   );
 })
 
@@ -54,7 +54,7 @@ export default App;
 export type SearchUserType = {
   login: string
   id: number
-  
+
 }
 export type SearchResultType = {
   items: Array<SearchUserType>

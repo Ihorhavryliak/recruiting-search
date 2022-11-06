@@ -1,14 +1,5 @@
 import React, { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
-import { useSearchParams } from "react-router-dom";
-
-
-
-type PaginatedItemsType = {
-  setPage: (page: number) => void
-  total_count: number
-  items: any
-}
 
 export const  PaginatedItems: React.FC<PaginatedItemsType>  =  React.memo((props) => {
   let {total_count} = props;
@@ -18,8 +9,6 @@ export const  PaginatedItems: React.FC<PaginatedItemsType>  =  React.memo((props
   }
   const {setPage} = props;
   const [pageCount, setPageCount] = useState(0);
-
-
 
 
   useEffect(() => {
@@ -55,3 +44,11 @@ export const  PaginatedItems: React.FC<PaginatedItemsType>  =  React.memo((props
     </>
   );
 })
+
+
+
+type PaginatedItemsType = {
+  setPage: (page: number) => void
+  total_count: number
+  items: any
+}
