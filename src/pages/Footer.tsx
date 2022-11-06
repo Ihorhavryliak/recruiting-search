@@ -1,10 +1,10 @@
 import React from 'react'
-
+import './../App.css'
 type  HeaderType = {
 
 }
 export  const Footer: React.FC<HeaderType>  = () => {
   return (
-    <div style={{textAlign: 'center', padding: '10px', background: '#ddd', fontSize: '12px'}}>Create by: Ihor Havryliak</div>
+    <div className='foooterBlock'>Create by: Ihor Havryliak</div>
   )
 }

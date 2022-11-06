@@ -4,6 +4,7 @@ import { SearchUserType, UserType } from "../App";
 import { Loading } from "../tools/loading";
 import { Timer } from "./TimerType";
 import styles from '../App.module.css'
+
 type PropType = {
   user: SearchUserType | null
   setLoad: (bool: boolean) => void
@@ -13,6 +14,9 @@ const secondNumber = 10;
 export const  InformationUsers: React.FC<PropType> = ({user, setLoad, isLoad}) => {
   const [userDetales, setUserDetales] = useState<null | UserType>(null);
   const [seconds, setSeconds] = useState(secondNumber);
+
+
+  
 
   useEffect(()=>{
     if(seconds < 1) {
@@ -32,16 +36,16 @@ export const  InformationUsers: React.FC<PropType> = ({user, setLoad, isLoad}) =
         }
         )
     }
-  }, [user]);
+  }, [user, setLoad]);
   
   return (
     <div >
-      {isLoad && <Loading />}
+      {isLoad && <Loading top={'20%'} />}
     {userDetales && <div>
       <Timer seconds={seconds} onChange={setSeconds} timerKey={userDetales.id.toString()}/>
       <h2>{userDetales.login} </h2>
 
-        <img alt='dsf' src={userDetales.avatar_url} />
+        <img className="userPhoto" alt='dsf' src={userDetales.avatar_url} />
         <br/>
         {userDetales.login}, followers: {userDetales.followers} 
     </div>}  

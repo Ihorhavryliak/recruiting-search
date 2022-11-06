@@ -4,6 +4,11 @@
 ul,
 ol {
   list-style: none;
+
+}
+li:hover{
+  cursor: pointer;
+  background-color: rgb(140, 140, 140);
 }
 
 .searchBlock{

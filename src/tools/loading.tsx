@@ -1,13 +1,17 @@
 import svg from './Gear-1s-197px.svg'
 type LoadingType = {
-
+  top?: string
+  left?: string
 }
 
 export const Loading: React.FC<LoadingType> = (props) => {
+  const {top = '10%'} = props;
+  const {left = '50%'} = props;
+
   return (
-    <div style={{position: 'absolute', top: '10%', left: '50%'}}>
+    <div style={{position: 'absolute', top: top, left: left}}>
       
-      <img src={svg} alt="Loading"  />
+      <img className='loadPhoto' src={svg} alt="Loading"  />
     </div>
   )
 }
