@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import { Loading } from './tools/loading';
-import { BrowserRouter} from 'react-router-dom';
+import { BrowserRouter, HashRouter} from 'react-router-dom';
 import { AppRouters } from './AppRouters';
 
 const root = ReactDOM.createRoot(
@@ -11,13 +11,13 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
+    <HashRouter>
         <Suspense fallback={<div><Loading /></div>}>
        
           <AppRouters />
         
         </Suspense>
-    </BrowserRouter>
+    </HashRouter>
   </React.StrictMode >
 );
 
