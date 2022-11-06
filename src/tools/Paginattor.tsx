@@ -19,9 +19,8 @@ export const  PaginatedItems: React.FC<PaginatedItemsType>  =  React.memo((props
   const {setPage} = props;
   const [pageCount, setPageCount] = useState(0);
 
-  const [urlPage, setUrlPage] = useSearchParams('');
 
-  const urlPages = urlPage.get('page')
+
 
   useEffect(() => {
     setPageCount(Math.ceil(total_count / itemsPerPage));
@@ -29,7 +28,6 @@ export const  PaginatedItems: React.FC<PaginatedItemsType>  =  React.memo((props
 
   const handlePageClick = (event: any) => {
     setPage(event.selected + 1);
-    setUrlPage({page: event.selected + 1})
   };
 
   return (

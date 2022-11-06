@@ -7,31 +7,29 @@ type PropsType = {
   value: string
   onSubmit: (fixedValue: string) => void
   isLoadSearch: boolean
+  setStr: Function
+  str: URLSearchParams
 }
 
-export const SearchBlock: React.FC<PropsType> = ({onSubmit, value, isLoadSearch}) => {
+export const SearchBlock: React.FC<PropsType> = ({onSubmit, value, isLoadSearch, setStr, str}) => {
+
   let startTexs = 'All';
   const [temperSearch, setTemperSearch] = useState('');
-
-  const [str, setStr] = useSearchParams('');
   const strings = str.get('seartch')
-
  
   useEffect(()=>{
     if (strings) {
       setTemperSearch(strings)
     }
-    
-  },[strings]);
+  }, [strings]);
 
   const reset = () => {
     setTemperSearch(startTexs);
     onSubmit(startTexs);
-    setStr('');
+    setStr();
   }
-
+  
 return (
- 
   <div className="input-group">
     <input className="form-control" placeholder='Search on GitHub' value={temperSearch} onChange={(e) =>
       {setTemperSearch(e.currentTarget.value); setStr({'seartch': e.currentTarget.value}) } } />
