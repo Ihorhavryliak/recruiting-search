@@ -9,6 +9,7 @@ type PropType = {
   user: SearchUserType | null
   setLoad: (bool: boolean) => void
   isLoad: boolean
+  
 }
 const secondNumber = 10;
 export const  InformationUsers: React.FC<PropType> = ({user, setLoad, isLoad}) => {
@@ -16,7 +17,6 @@ export const  InformationUsers: React.FC<PropType> = ({user, setLoad, isLoad}) =
   const [seconds, setSeconds] = useState(secondNumber);
 
 
-  
 
   useEffect(()=>{
     if(seconds < 1) {

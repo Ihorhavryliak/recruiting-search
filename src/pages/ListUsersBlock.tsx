@@ -11,13 +11,14 @@ type PropsType = {
   setLoadSearch: (bol: boolean) => void
   isLoad: boolean
   str: URLSearchParams
+  setCurrentPage: (nun: number)=> void
+  currentPage: number
 }
 
 
-export const ListUsersBlock: React.FC<PropsType> = React.memo(({ serchTerm, selecUser, onUserSelect, setLoadSearch, isLoad, str }) => {
+export const ListUsersBlock: React.FC<PropsType> = React.memo(({ currentPage, serchTerm, selecUser, onUserSelect, setLoadSearch, isLoad, str, setCurrentPage }) => {
 
   const [users, setUsers] = useState<SearchResultType>();
-  const [page, setPage] = useState<number>(1);
   const [showMore, setShowMore] = useState<number>(10);
   const [screenWigth, setScreenWigth] = useState<number>(() => window.innerWidth);
 
@@ -30,29 +31,26 @@ export const ListUsersBlock: React.FC<PropsType> = React.memo(({ serchTerm, sele
   }, []);
 
   useEffect(() => {
-    console.log('user')
     setLoadSearch(true)
-
-    axios.get<SearchResultType>(`https://api.github.com/search/users?q=${serchTerm}&page=${page}`)
+    axios.get<SearchResultType>(`https://api.github.com/search/users?q=${serchTerm}&page=${currentPage + 1}`)
       .then(res => {
         setUsers(res.data)
         setShowMore(10)
         setLoadSearch(false)
       }
-
       ).catch(error => {
         setLoadSearch(false)
         alert('Reload The Page Please. ' + error + ' Error: ' + error.request.response)
       })
 
-  }, [setLoadSearch, serchTerm, page]);
+  }, [setLoadSearch, serchTerm, currentPage]);
 
   let nextPage = 0;
-  if (page !== 0) {
-    nextPage = (30 * page) - 30;
+  if (currentPage !== 0) {
+    nextPage = (30 * currentPage) - 30;
   }
 
-  if (page === 1) {
+  if (currentPage === 1) {
     nextPage = 0;
   }
 
@@ -83,8 +81,9 @@ export const ListUsersBlock: React.FC<PropsType> = React.memo(({ serchTerm, sele
         {users?.items !== undefined && users?.items.length === 0 && 'Nothing search. Please try search'}
       </div>
       {users?.items !== undefined
-        ? <PaginatedItems items={users?.items} total_count={users.total_count} setPage={setPage} /> : null}
+        ?  <PaginatedItems currentPage={currentPage} setCurrentPage={setCurrentPage}  items={users?.items} total_count={users.total_count}  /> : null}
     </div>
+   {/*  <div key={`${cleanPage}`}></div> */}
   </>
   )
 })

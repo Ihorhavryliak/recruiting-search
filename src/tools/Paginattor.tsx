@@ -1,31 +1,34 @@
 import React, { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
 
+
 export const  PaginatedItems: React.FC<PaginatedItemsType>  =  React.memo((props) => {
   let {total_count} = props;
+  const {setCurrentPage} = props;
+  const {currentPage} = props;
   let itemsPerPage =  30
   if (total_count > 1000) {
-    total_count = 1000 - 30;
+    total_count = 1000;
   }
-  const {setPage} = props;
-  const [pageCount, setPageCount] = useState(0);
 
+  const [pageCount, setPageCount] = useState(0);
 
   useEffect(() => {
     setPageCount(Math.ceil(total_count / itemsPerPage));
   }, [ itemsPerPage, total_count]);
 
-  const handlePageClick = (event: any) => {
-    setPage(event.selected + 1);
+  const page = (current: any) => {
+    setCurrentPage(current.pageNumber.selected );
   };
-
+  
   return (
     <>
       <ReactPaginate
+           forcePage = {currentPage}
         nextLabel=" >"
-        onPageChange={handlePageClick}
-        pageRangeDisplayed={3}
-        marginPagesDisplayed={2}
+        onPageChange={(pageNumber) => {  page({ pageNumber }); }}
+        pageRangeDisplayed={0}
+        marginPagesDisplayed={3}
         pageCount={pageCount}
         previousLabel="< "
         pageClassName="page-item"
@@ -40,6 +43,7 @@ export const  PaginatedItems: React.FC<PaginatedItemsType>  =  React.memo((props
         containerClassName="pagination"
         activeClassName="active"
         renderOnZeroPageCount={undefined}
+        
       />
     </>
   );
@@ -48,7 +52,9 @@ export const  PaginatedItems: React.FC<PaginatedItemsType>  =  React.memo((props
 
 
 type PaginatedItemsType = {
-  setPage: (page: number) => void
+
   total_count: number
   items: any
+  setCurrentPage: (num: number) => void
+  currentPage: number
 }

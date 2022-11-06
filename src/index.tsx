@@ -11,13 +11,13 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <HashRouter>
+    <BrowserRouter>
         <Suspense fallback={<div><Loading /></div>}>
        
           <AppRouters />
         
         </Suspense>
-    </HashRouter>
+    </BrowserRouter>
   </React.StrictMode >
 );
 

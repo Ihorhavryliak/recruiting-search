@@ -10,6 +10,7 @@ export const AppRouters = React.memo (() => {
  
     <Routes>
         <Route path="/" element={<App />} />
+        <Route path="*" element={<div>Page not found</div>} />
     </Routes>
   )
 })

@@ -7,20 +7,21 @@ import { InformationUsers } from './pages/InformationUsers';
 import { ListUsersBlock } from './pages/ListUsersBlock';
 import { SearchBlock } from './pages/SearchBlock';
 
-
-
-
 const App = React.memo(() => {
 
   let rightUrl = useLocation();
   const queryString = require('query-string');
   const parsed = queryString.parse(rightUrl.search)['seartch'];
   const [str, setStr]: [URLSearchParams, Function] = useSearchParams();
-  const searchName = parsed
+  let searchName = parsed;
+  if(searchName === undefined) {
+    searchName = 'A'
+  }
   const [serchTerm, setSerchTerm] = useState(searchName);
   const [selecUser, setSelecUser] = useState<SearchUserType | null>(null);
   const [isLoad, setLoad] = useState(false);
   const [isLoadSearch, setLoadSearch] = useState(false);
+  const [currentPage, setCurrentPage] = useState(0);
 
   useEffect(() => {
     console.log('title')
@@ -33,15 +34,15 @@ const App = React.memo(() => {
     <Header />
     <div className='block'>
       <div className='blockLeft'>
-        <SearchBlock setStr={setStr} str={str}
+        <SearchBlock setCurrentPage={setCurrentPage} setStr={setStr} str={str}
           value={serchTerm}
           onSubmit={(value: string) => { setSerchTerm(value) }}
           isLoadSearch={isLoadSearch} />
-        <ListUsersBlock str={str} serchTerm={serchTerm} selecUser={selecUser} onUserSelect={setSelecUser}
+        <ListUsersBlock currentPage={currentPage}  setCurrentPage={setCurrentPage} str={str} serchTerm={serchTerm} selecUser={selecUser} onUserSelect={setSelecUser}
           setLoadSearch={setLoadSearch} isLoad={isLoadSearch} />
       </div>
       <div className='blockRight'>
-        <InformationUsers user={selecUser} setLoad={setLoad} isLoad={isLoad} />
+        <InformationUsers  user={selecUser} setLoad={setLoad} isLoad={isLoad} />
       </div>
     </div>
     <Footer />

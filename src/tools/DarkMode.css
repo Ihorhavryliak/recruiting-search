@@ -89,25 +89,7 @@ a {
     'blockLeft blockRight';
 }
 
-@media screen and (max-width: 800px) {
-  .block {
-    display: grid;
-    grid-template-columns: none;
-    grid-template-areas:
 
-      'blockRight'
-      'blockLeft';
-  }
-
-  .pagination {
-    display: block;
-  }
-
-  .page-item {
-    margin-top: 5px;
-  }
-
-}
 
 .blockLeft {
   background-color: var(--blok-left-color);
@@ -126,6 +108,33 @@ a {
   padding: 10px;
   background: var(--footer-color);
   font-size: 12px
+}
+/* Media */
+@media screen and (max-width: 800px) {
+  .block {
+    display: grid;
+    grid-template-columns: none;
+    grid-template-areas:
+
+      'blockRight'
+      'blockLeft';
+  }
+  .blockRight{
+    padding: 20px 10px 16px 10px;
+  }
+  .userPhoto{
+    width: 100%;
+    margin-right: 10px;
+  }
+
+  .pagination {
+    display: block;
+  }
+
+  .page-item {
+    margin-top: 5px;
+  }
+
 }
 
 /* Custom Dark Mode Toggle Element */
