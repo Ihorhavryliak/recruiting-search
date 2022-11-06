@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/recruiting-search/static/css/main.c5b14618.css",
+    "main.js": "/recruiting-search/static/js/main.6ed3c1bf.js",
+    "static/js/787.28cb0dcd.chunk.js": "/recruiting-search/static/js/787.28cb0dcd.chunk.js",
+    "static/media/Gear-1s-197px.svg": "/recruiting-search/static/media/Gear-1s-197px.4d26172fbc0d3eb4c46eba26d6700858.svg",
+    "index.html": "/recruiting-search/index.html",
+    "main.c5b14618.css.map": "/recruiting-search/static/css/main.c5b14618.css.map",
+    "main.6ed3c1bf.js.map": "/recruiting-search/static/js/main.6ed3c1bf.js.map",
+    "787.28cb0dcd.chunk.js.map": "/recruiting-search/static/js/787.28cb0dcd.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c5b14618.css",
+    "static/js/main.6ed3c1bf.js"
+  ]
+}
