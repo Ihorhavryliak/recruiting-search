@@ -4,19 +4,9 @@ import { SearchResultType, SearchUserType  } from "../App";
 import { Loading } from "../tools/loading";
 import { PaginatedItems } from "../tools/Paginattor";
 import style from './../App.module.css'
-type PropsType = {
-  serchTerm: string
-  selecUser: SearchUserType | null
-  onUserSelect: (user: SearchUserType) => void
-  setLoadSearch: (bol: boolean) => void
-  isLoad: boolean
-  str: URLSearchParams
-  setCurrentPage: (nun: number)=> void
-  currentPage: number
-}
 
 
-export const ListUsersBlock: React.FC<PropsType> = React.memo(({ currentPage, serchTerm, selecUser, onUserSelect, setLoadSearch, isLoad, str, setCurrentPage }) => {
+export const ListUsersBlock: React.FC<PropsType> = React.memo(({ currentPage, serchTerm, selecUser, onUserSelect, setLoadSearch, isLoad,  setCurrentPage }) => {
 
   const [users, setUsers] = useState<SearchResultType>();
   const [showMore, setShowMore] = useState<number>(10);
@@ -42,7 +32,6 @@ export const ListUsersBlock: React.FC<PropsType> = React.memo(({ currentPage, se
         setLoadSearch(false)
         alert('Reload The Page Please. ' + error + ' Error: ' + error.request.response)
       })
-
   }, [setLoadSearch, serchTerm, currentPage]);
 
   let nextPage = 0;
@@ -51,7 +40,6 @@ export const ListUsersBlock: React.FC<PropsType> = React.memo(({ currentPage, se
   }
 
   if (currentPage === 1) {
-   
     nextPage = (30 * 1);
   }
 
@@ -84,7 +72,17 @@ export const ListUsersBlock: React.FC<PropsType> = React.memo(({ currentPage, se
       {users?.items !== undefined
         ?  <PaginatedItems currentPage={currentPage} setCurrentPage={setCurrentPage}  items={users?.items} total_count={users.total_count}  /> : null}
     </div>
-   {/*  <div key={`${cleanPage}`}></div> */}
+ 
   </>
   )
 })
+
+type PropsType = {
+  serchTerm: string
+  selecUser: SearchUserType | null
+  onUserSelect: (user: SearchUserType) => void
+  setLoadSearch: (bol: boolean) => void
+  isLoad: boolean
+  setCurrentPage: (nun: number)=> void
+  currentPage: number
+}
